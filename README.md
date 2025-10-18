@@ -1,4 +1,7 @@
 # Lost-and-found-project
+
+Abel Rodriguez, Andres Montemayor, Jordan Gutierrez
+
 this app will be focused on helping the users find lost items on different parts of campus. 
 lets different parts of the lost and found building departments to report items that where lost which lets users find items quickly
 
