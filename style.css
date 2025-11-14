@@ -60,3 +60,33 @@ body {
     color: white;
     font-size: 2rem;
 }
+
+.logo-utrgv,
+.brand-lostfound {
+    transition: transform 0.2s ease, letter-spacing 0.2s ease;
+}
+
+.logo-utrgv:hover,
+.brand-lostfound:hover {
+    transform: scale(1.05);
+    letter-spacing: 1px;
+}
+
+.navbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+}
+
+.navbar-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.navbar-title-underline {
+    width: 350px;
+    height: 3px;
+    background-color: #F15A22;  /* UTRGV orange */
+    margin-top: 4px;
+    border-radius: 10px;
+}
