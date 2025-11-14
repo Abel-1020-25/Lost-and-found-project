@@ -43,3 +43,16 @@ body {
 .btn-primary:hover {
     background-color: #003d99;
 }
+
+/* UTRGV Orange + University Style Font */
+.utrgv-brand {
+    color: #F76800;               /* UTRGV orange */
+    font-weight: 900;             /* Thick bold */
+    font-size: 1.6rem;            /* Matches brand size */
+    letter-spacing: 1px;          /* More "college" feel */
+    font-family: 'Georgia', serif; /* Academic serif font */
+}
+
+.utrgv-brand:hover {
+    text-shadow: 0px 0px 6px rgba(255, 115, 0, 0.6);
+}
