@@ -1,0 +1,45 @@
+/* Global font & spacing */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 50px;
+}
+
+/* Navbar styling */
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Card default styling */
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover animation */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* LOST items styling */
+.card-title[data-status="LOST"] {
+    color: #d9534f; /* Bootstrap danger red */
+}
+
+/* FOUND items styling */
+.card-title[data-status="FOUND"] {
+    color: #5cb85c; /* Bootstrap success green */
+}
+
+/* Buttons touched up */
+.btn-primary {
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+    background-color: #003d99;
+}
