@@ -6,59 +6,54 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: black !important;
-        }
-    </style>
 </head>
-<body>
+<body class="login-background">
 
-    <!-- Navbar removed as requested -->
+    <!-- navbar-->
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container d-flex justify-content-between">
+            <a class="navbar-brand" href="home.html">Lost and Found</a>
+            <a href="index.html" class="btn btn-outline-light btn-sm">Logout</a>
+        </div>
+    </nav>
 
     <div class="container">
-        <div class="text-center mb-4 text-light">
+        <div class="text-center mb-4">
             <h2>Welcome to the Lost and Found Portal</h2>
             <p class="text-muted">Choose an option below to get started.</p>
         </div>
 
         <div class="row justify-content-center">
-            <!-- Login (Post Lost Item) -->
+            <!-- Post a lost item -->
             <div class="col-md-4">
-                <div class="card shadow-sm mb-5">
+                <div class="card shadow-sm mb-4">
                     <div class="card-body text-center">
                         <h4 class="card-title mb-3">Post a Lost Item</h4>
-                        <p class="card-text text-muted">
+                        <p class="card-text">
                             Report an item you have found so others can search for it.
                         </p>
-                        <a href="post_item.html" class="btn w-100" style="background-color: orange; color: black; font-weight: bold;">
+                        <a href="post_item.html" class="btn btn-primary w-100">
                             Post Lost Item
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Sign Up (Search Lost Item) moved far down so scrolling is required -->
-        <div style="height: 420px;"></div> <!-- creates scrolling space -->
-
-        <div class="row justify-content-center">
+            <!-- Look for a lost item -->
             <div class="col-md-4">
                 <div class="card shadow-sm mb-4">
                     <div class="card-body text-center">
                         <h4 class="card-title mb-3">Look for a Lost Item</h4>
-                        <p class="card-text text-muted">
+                        <p class="card-text">
                             Search the posted items to see if someone has found your belongings.
                         </p>
-                        <a href="search_item.html" class="btn w-100" style="background-color: orange; color: black; font-weight: bold;">
+                        <a href="search_item.html" class="btn btn-success w-100">
                             Look for Lost Item
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Bootstrap JS -->
