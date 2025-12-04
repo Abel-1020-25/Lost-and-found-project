@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Lost Item - Lost and Found</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="login-background">
+
+    <!-- navbar-->
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container d-flex justify-content-between">
+            <a class="navbar-brand" href="home.html">Lost and Found</a>
+            <a href="index.html" class="btn btn-outline-light btn-sm">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="mb-4">Post a Lost Item</h2>
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <form id="postItemForm">
+                    <!-- Item type -->
+                    <div class="mb-3">
+                        <label class="form-label">Item Type</label>
+                        <select class="form-select" id="itemType" required>
+                            <option value="" selected disabled>Choose...</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="artifact">Artifact</option>
+                        </select>
+                    </div>
+
+                    <!-- Building and room -->
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Building</label>
+                            <input type="text" class="form-control" id="building" placeholder="e.g., Engineering Building" required>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Room</label>
+                            <input type="text" class="form-control" id="room" placeholder="e.g., EENG 1.234" required>
+                        </div>
+                    </div>
+
+                    <!-- Date and time -->
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Date Lost</label>
+                            <input type="date" class="form-control" id="dateFound" required>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Time Lost</label>
+                            <input type="time" class="form-control" id="timeFound" required>
+                        </div>
+                    </div>
+
+                    <!-- Color -->
+                    <div class="mb-3">
+                        <label class="form-label">Color</label>
+                        <input type="text" class="form-control" id="color" placeholder="e.g., Black, Red and White" required>
+                    </div>
+
+                    <!-- Special details -->
+                    <div class="mb-3">
+                        <label class="form-label">Special Details</label>
+                        <textarea class="form-control" id="specialDetails" rows="3"
+                                  placeholder="Any special markings, logos, damage, or unique features to help identify the item."
+                                  required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Submit Lost Item</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Simple success alert (front-end only placeholder) -->
+        <div id="postSuccess" class="alert alert-success d-none" role="alert">
+            Lost item posted successfully! (In a real system, this would be saved in the database.)
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Simple front-end form handler placeholder -->
+    <script>
+        document.getElementById('postItemForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // TODO: Replace this with an actual backend call (e.g., fetch/axios)
+            document.getElementById('postSuccess').classList.remove('d-none');
+
+            // Optionally clear form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
