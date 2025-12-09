@@ -1,0 +1,11 @@
+CREATE TABLE lost_items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    item_type TEXT,
+    building TEXT,
+    room TEXT,
+    date_lost TEXT,
+    time_lost TEXT,
+    color TEXT,
+    details TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
