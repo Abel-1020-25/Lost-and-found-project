@@ -1,0 +1,64 @@
+/* -------------------------
+   GLOBAL STYLES  
+------------------------- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Make all pages feel clean and centered */
+.container {
+    margin-top: 30px;
+}
+
+/* Consistent Titles */
+h1, h2, h3, h4, h5 {
+    color: #333;
+    font-weight: bold;
+}
+
+/* UTRGV Orange Buttons */
+.btn-orange {
+    background-color: #F05023 !important;
+    color: white !important;
+    font-weight: bold;
+    border: none;
+}
+.btn-orange:hover {
+    background-color: #d8431f !important;
+    color: white !important;
+}
+
+/* Navbar */
+.navbar-brand {
+    color: #F05023 !important;
+    font-weight: bold;
+}
+.navbar-dark .navbar-brand:hover {
+    color: #ff6a37 !important;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 12px;
+}
+
+/* Give cards a clean, modern shadow */
+.card.shadow-sm {
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+/* Universal inputs */
+input.form-control {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Background for login page */
+.login-background {
+    background: linear-gradient(135deg, #ffffff, #f8e9e4, #ffe4d6);
+    background-size: cover;
+    min-height: 100vh;
+}
