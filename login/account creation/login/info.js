@@ -1,26 +1,30 @@
-const accInfoForm = document.getElementById("accInfoForm");
+const signupForm = document.getElementById("signupForm");
 
-if (!accInfoForm) {
-    console.error("accInfoForm not found");
-}
-
-accInfoForm.addEventListener("submit", function (e) {
+signupForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const userInfo = {
-        firstName: document.getElementById("firstName").value.trim(),
-        middleName: document.getElementById("middleName").value.trim(),
-        lastName: document.getElementById("lastName").value.trim(),
-        utrgvId: document.getElementById("utrgvId").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        campus: document.getElementById("campus").value
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const utrgvId = document.getElementById("utrgvId").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!name || !email || !utrgvId || !password) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // Save current user in localStorage
+    const currentUser = {
+        name: name,
+        email: email,
+        id: "UTRGV-" + Math.floor(1000 + Math.random() * 9000)
     };
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-    console.log("User info saved:", userInfo);
-
-    // Save for later (My Account page)
-    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    // Save all registered users (optional, useful for login verification)
+    const allUsers = JSON.parse(localStorage.getItem("allUsers")) || {};
+    allUsers[email] = { name, utrgvId, password };
+    localStorage.setItem("allUsers", JSON.stringify(allUsers));
 
     // Redirect to logged-in home
     window.location.href = "../../../AfterLogIn/afterLog.html";

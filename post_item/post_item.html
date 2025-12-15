@@ -1,142 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
-    <title>Post Lost Item - Lost and Found</title>
-
-    <!-- Bootstrap CSS -->
+    <title>Post Item - Lost & Found</title>
+    <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="login-background">
 
-    <!-- navbar-->
-    <nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
-  <div class="container d-flex flex-column justify-content-center align-items-center">
-    <h1 class="navbar-title text-center">
-      <span class="utr-orange">UTRGV</span> Lost &amp; Found
-    </h1>
-    <div class="navbar-actions mt-2">
-      <a href="../home/index.html" class="btn btn-outline-light btn-sm">Logout</a>
-      <a href="../AfterLogIn/afterLog.html" class="btn btn-outline-light btn-sm">Home</a>
+<nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <h1 class="navbar-title text-center">
+            <span class="utr-orange">UTRGV</span> Lost &amp; Found
+        </h1>
+        <div class="navbar-actions mt-2">
+            <button onclick="logout()" class="btn btn-outline-light btn-sm">Logout</button>
+            <a href="../user_home/userHome.html" class="btn btn-outline-light btn-sm">Home</a>
+        </div>
     </div>
-  </div>
 </nav>
 
-
-
-
-    <div class="container">
-        <h2 class="mb-4">Post a Lost Item</h2>
-
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <form id="postItemForm">
-                    <!-- Item type -->
-                    <div class="mb-3">
-                        <label class="form-label">Item Type</label>
-                        <select class="form-select" id="itemType" required>
-                            <option value="" selected disabled>Choose...</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="electronics">Electronics</option>
-                            <option value="accessories">Accessories (Glasses, Jewelry, Watch)</option>
-                            <option value="backpack">Backpack / Bag</option>
-                            <option value="wallet">Wallet / Purse</option>
-                            <option value="keys">Keys</option>
-                            <option value="id">ID / Card</option>
-                            <option value="books">Books / Notebooks</option>
-                            <option value="waterbottle">Water Bottle</option>
-                            <option value="other">Other</option>
-                        </select>
+<div class="container">
+    <h2 class="mb-4">Post an Item</h2>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form id="postItemForm">
+                <div class="mb-3">
+                    <label class="form-label">I...</label>
+                    <select class="form-select" id="lostOrFound" required>
+                        <option value="" disabled selected>Choose...</option>
+                        <option value="lost">Lost Something</option>
+                        <option value="found">Found Something</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Item Type</label>
+                    <select class="form-select" id="itemType" required>
+                        <option value="" disabled selected>Choose...</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Backpack">Backpack / Bag</option>
+                        <option value="Wallet">Wallet / Purse</option>
+                        <option value="Keys">Keys</option>
+                        <option value="ID">ID / Card</option>
+                        <option value="Books">Books / Notebooks</option>
+                        <option value="Water Bottle">Water Bottle</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Building</label>
+                        <input type="text" class="form-control" id="building" required>
                     </div>
-
-
-                    <!-- Building and room -->
-                    <div class="row">
-                        <div class="mb-3 col-md-6">
-                            <label class="form-label">Building</label>
-                            <input type="text" class="form-control" id="building" placeholder="e.g., Engineering Building" required>
-                        </div>
-
-                        <div class="mb-3 col-md-6">
-                            <label class="form-label">Room</label>
-                            <input type="text" class="form-control" id="room" placeholder="e.g., EENG 1.234" required>
-                        </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Room</label>
+                        <input type="text" class="form-control" id="room" required>
                     </div>
-
-                    <!-- Date and time -->
-                    <div class="row">
-                        <div class="mb-3 col-md-6">
-                            <label class="form-label">Date Lost</label>
-                            <input type="date" class="form-control" id="dateFound" required>
-                        </div>
-
-                        <div class="mb-3 col-md-6">
-                            <label class="form-label">Time Lost</label>
-                            <input type="time" class="form-control" id="timeFound" required>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-control" id="dateFound" required>
                     </div>
-
-                    <!-- Color -->
-                    <div class="mb-3">
-                        <label class="form-label">Color</label>
-                        <input type="text" class="form-control" id="color" placeholder="e.g., Black, Red and White" required>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Time</label>
+                        <input type="time" class="form-control" id="timeFound" required>
                     </div>
-
-                    <!-- Special details -->
-                    <div class="mb-3">
-                        <label class="form-label">Special Details</label>
-                        <textarea class="form-control" id="specialDetails" rows="3"
-                                  placeholder="Any special markings, logos, damage, or unique features to help identify the item."
-                                  required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100">Submit Lost Item</button>
-                </form>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Color</label>
+                    <input type="text" class="form-control" id="color" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Special Details</label>
+                    <textarea class="form-control" id="specialDetails" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+            <div id="postSuccess" class="alert alert-success text-center mt-4 d-none">
+                <strong>ITEM SUBMITTED — WE’LL KEEP AN EYE OUT FOR YOU!</strong>
             </div>
         </div>
-
-        <!-- Simple success alert (front-end only placeholder) -->
-        <div id="postSuccess" class="alert alert-success d-none" role="alert">
-            Lost item posted successfully! (In a real system, this would be saved in the database.)
-        </div>
     </div>
+</div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if (!currentUser) {
+    alert("You must be logged in to post items.");
+    window.location.href = "../login/account creation/login.html";
+}
 
-    <!-- Simple front-end form handler placeholder -->
-    <script>
-document.getElementById('postItemForm').addEventListener('submit', function (e) {
+document.getElementById("postItemForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const item = {
-        type: document.getElementById('itemType').value,
-        building: document.getElementById('building').value,
-        room: document.getElementById('room').value,
-        date: document.getElementById('dateFound').value,
-        time: document.getElementById('timeFound').value,
-        color: document.getElementById('color').value,
-        details: document.getElementById('specialDetails').value
+    const newItem = {
+        type: document.getElementById("itemType").value,
+        building: document.getElementById("building").value.trim(),
+        room: document.getElementById("room").value.trim(),
+        color: document.getElementById("color").value.trim(),
+        date: document.getElementById("dateFound").value,
+        time: document.getElementById("timeFound").value,
+        details: document.getElementById("specialDetails").value.trim(),
+        category: document.getElementById("lostOrFound").value // "lost" or "found"
     };
 
-    // Get existing lost items or create empty array
-    const lostItems = JSON.parse(localStorage.getItem('lostItems')) || [];
-    lostItems.push(item);
+    // Get existing items object or empty
+    const allItems = JSON.parse(localStorage.getItem("userItems")) || {};
 
-    // Save back to localStorage
-    localStorage.setItem('lostItems', JSON.stringify(lostItems));
+    // Initialize current user's object if needed
+    if (!allItems[currentUser.email]) {
+        allItems[currentUser.email] = { lost: [], found: [] };
+    }
 
-    // Show success message
-    const success = document.getElementById('postSuccess');
-    success.classList.remove('d-none');
+    // Save new item under the correct category
+    allItems[currentUser.email][newItem.category].push(newItem);
+    localStorage.setItem("userItems", JSON.stringify(allItems));
 
-    // Redirect after short delay
+    document.getElementById("postSuccess").classList.remove("d-none");
+
     setTimeout(() => {
+        // Go to afterLog.html so user can continue navigating/searching
         window.location.href = "../AfterLogIn/afterLog.html";
-    }, 2000);
+    }, 1500);
 });
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "../home/index.html";
+}
 </script>
+
 
 </body>
 </html>

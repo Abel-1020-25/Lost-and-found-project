@@ -1,145 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
-    <title>Search Lost Items - Lost and Found</title>
-
-    <!-- Bootstrap CSS -->
+    <title>Search Lost Items</title>
+    <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="login-background">
 
-    <!-- navbar-->
-    <nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
-  <div class="container d-flex flex-column justify-content-center align-items-center">
-    <h1 class="navbar-title text-center">
-      <span class="utr-orange">UTRGV</span> Lost &amp; Found
-    </h1>
-    <div class="navbar-actions mt-2">
-      <a href="../home/index.html" class="btn btn-outline-light btn-sm">Logout</a>
-      <a href="../AfterLogIn/afterLog.html" class="btn btn-outline-light btn-sm">Home</a>
+<nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <h1 class="navbar-title"><span class="utr-orange">UTRGV</span> Lost & Found</h1>
+        <div class="navbar-actions mt-2">
+            <a href="../home/index.html" class="btn btn-outline-light btn-sm">Home</a>
+        </div>
     </div>
-  </div>
 </nav>
 
-
-
-
-    <div class="container">
-        <h2 class="mb-3">Look for a Lost Item</h2>
-        <p class="text-muted">
-            Enter keywords that describe your lost item (color, building, item type, etc.).
-        </p>
-
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-                <form id="searchForm" class="row g-3">
-                    <div class="col-md-10">
-                        <label class="form-label">Search Keywords and be specfic</label>
-                        <input type="text" class="form-control" id="searchKeywords" placeholder="e.g., black hoodie engineering building" required>
-                    </div>
-                    <div class="col-md-2 d-flex align-items-end">
-                        <button type="submit" class="btn btn-success w-100 mt-2 mt-md-0">Search</button>
-                    </div>
-                </form>
-            </div>
+<div class="container">
+    <h2 class="mb-3">Look for a Lost Item</h2>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form id="searchForm" class="row g-3">
+                <div class="col-md-10">
+                    <label class="form-label">Search Keywords</label>
+                    <input type="text" class="form-control" id="searchKeywords" placeholder="e.g., black hoodie" required>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-success w-100">Search</button>
+                </div>
+            </form>
         </div>
-
-        <!-- Search results -->
-        <div id="searchResults"></div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="searchResults"></div>
+</div>
 
-    <script>
-        // Dummy data - replace with real data from your backend later
-        const sampleItems = [
-            {
-                type: "clothing",
-                title: "Black Hoodie",
-                building: "Engineering Building",
-                room: "EENG 1.234",
-                color: "Black",
-                details: "UTRGV logo on the front, small tear on left sleeve.",
-                date: "2025-11-15",
-                time: "10:30"
-            },
-            {
-                type: "artifact",
-                title: "USB Flash Drive",
-                building: "Library",
-                room: "LIB 2.101",
-                color: "Blue",
-                details: "32GB flash drive with a keychain.",
-                date: "2025-11-18",
-                time: "14:00"
-            }
-        ];
+<script>
+const form = document.getElementById("searchForm");
+const input = document.getElementById("searchKeywords");
+const resultsDiv = document.getElementById("searchResults");
 
-        document.getElementById('searchForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    const keyword = input.value.toLowerCase().trim();
+    resultsDiv.innerHTML = "";
+    if(!keyword){
+        resultsDiv.innerHTML = "<p class='text-muted text-center'>Please enter a keyword.</p>";
+        return;
+    }
 
-            const keywords = document.getElementById('searchKeywords').value.toLowerCase();
-            const resultsContainer = document.getElementById('searchResults');
-            resultsContainer.innerHTML = "";
+    const allItemsObj = JSON.parse(localStorage.getItem("lostItems")) || {};
+    const allItems = Object.values(allItemsObj).flat();
 
-            // Very simple keyword match across several fields
-            const matches = sampleItems.filter(item => {
-                const text = (
-                    item.type + " " +
-                    item.title + " " +
-                    item.building + " " +
-                    item.room + " " +
-                    item.color + " " +
-                    item.details
-                ).toLowerCase();
+    const filtered = allItems.filter(item => 
+        item.type.toLowerCase().includes(keyword) ||
+        item.color.toLowerCase().includes(keyword) ||
+        item.building.toLowerCase().includes(keyword) ||
+        item.details.toLowerCase().includes(keyword)
+    );
 
-                return text.includes(keywords);
-            });
+    if(filtered.length===0){
+        resultsDiv.innerHTML = "<p class='text-muted text-center'>No matching items found.</p>";
+        return;
+    }
 
-            if (matches.length === 0) {
-                // No matches found → show "call university police" message
-                const noMatchCard = document.createElement('div');
-                noMatchCard.className = "card border-danger mb-4";
+    function formatTime(time24) {
+    if (!time24) return "";
+    const [hourStr, min] = time24.split(":");
+    let hour = parseInt(hourStr);
+    const ampm = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12;
+    if (hour === 0) hour = 12;
+    return `${hour}:${min} ${ampm}`;
+}
 
-                noMatchCard.innerHTML = `
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">No Matching Items Found</h5>
-                        <p class="card-text">
-                            We could not find any items that match your description.
-                            Please contact the University Police to report your lost item.
-                        </p>
-                        <p class="fw-bold">
-                            University Police: <span class="text-danger">[Insert University Police Phone Number Here]</span>
-                        </p>
-                    </div>
-                `;
+filtered.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card shadow-sm mb-3";
 
-                resultsContainer.appendChild(noMatchCard);
-            } else {
-                // Show matches
-                matches.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = "card shadow-sm mb-3";
+    card.innerHTML = `
+        <div class="card-body">
+            <h5 class="card-title text-capitalize">${item.color} ${item.type}</h5>
+            <p><strong>Type:</strong> ${item.type}</p>
+            <p><strong>Building:</strong> ${item.building}</p>
+            <p><strong>Room:</strong> ${item.room}</p>
+            <p><strong>Color:</strong> ${item.color}</p>
+            <p><strong>Date/Time Lost:</strong> ${item.date} at ${formatTime(item.time)}</p>
+            <p><strong>Details:</strong> ${item.details}</p>
+        </div>
+    `;
 
-                    card.innerHTML = `
-                        <div class="card-body">
-                            <h5 class="card-title">${item.title}</h5>
-                            <p class="card-text mb-1"><strong>Type:</strong> ${item.type}</p>
-                            <p class="card-text mb-1"><strong>Building:</strong> ${item.building}</p>
-                            <p class="card-text mb-1"><strong>Room:</strong> ${item.room}</p>
-                            <p class="card-text mb-1"><strong>Color:</strong> ${item.color}</p>
-                            <p class="card-text mb-1"><strong>Date/Time Found:</strong> ${item.date} at ${item.time}</p>
-                            <p class="card-text"><strong>Details:</strong> ${item.details}</p>
-                        </div>
-                    `;
+    resultsDiv.appendChild(card);
+});
 
-                    resultsContainer.appendChild(card);
-                });
-            }
-        });
-    </script>
+});
+</script>
+
 </body>
 </html>

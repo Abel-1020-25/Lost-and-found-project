@@ -1,24 +1,23 @@
 const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", function (e) {
+loginForm.addEventListener("submit", function(e){
     e.preventDefault();
 
-    const email = document.getElementById("loginEmail").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const utrgvId = document.getElementById("loginUtrgvId").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-    //  Clear old signup info FIRST
-    localStorage.removeItem("userInfo");
+    if(!name || !email || !utrgvId || !password){
+        alert("Please fill all fields.");
+        return;
+    }
 
-    // Save ONLY what login should know
-    const userInfo = {
-        email: email,
-        firstName: "",
-        middleName: "",
-        lastName: "",
-        utrgvId: ""
-    };
+    const user = { name, email, id: utrgvId };
 
-    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    // Save current user
+    localStorage.setItem("currentUser", JSON.stringify(user));
 
-    // Go to logged-in home
-    window.location.href = "../../../AfterLogIn/afterLog.html";
+    // Redirect to userHome
+    window.location.href = "../../../../user_home/userHome.html";
 });
