@@ -1,14 +1,22 @@
-// Handle Login form
-const loginForm = document.getElementById('loginForm');
+const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // stop page reload
+loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value.trim();
+    const email = document.getElementById("loginEmail").value.trim();
+    const utrgvId = document.getElementById("loginUtrgvId").value.trim();
 
-    // const res = await fetch('http://localhost:3000/api/login', { ... })
+    // Get existing userInfo if it exists
+    let userInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
 
-    console.log('Login with:', email, password);
-    alert('Login clicked (this will later talk to the backend).');
+    // Update login-related info
+    userInfo.email = email;
+    userInfo.utrgvId = utrgvId;
+
+    // Save BACK to the same key
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+    console.log("Updated userInfo:", userInfo);
+
+    window.location.href = "../../../AfterLogIn/afterLog.html";
 });
