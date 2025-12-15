@@ -5,7 +5,7 @@ loginForm.addEventListener("submit", function (e) {
 
     const email = document.getElementById("loginEmail").value.trim();
 
-    // 🔥 Clear old signup info FIRST
+    //  Clear old signup info FIRST
     localStorage.removeItem("userInfo");
 
     // Save ONLY what login should know
