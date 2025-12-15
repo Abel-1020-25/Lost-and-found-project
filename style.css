@@ -1,0 +1,120 @@
+/* -------------------------
+   GLOBAL STYLES  
+------------------------- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Make all pages feel clean and centered */
+.container {
+    margin-top: 30px;
+}
+
+/* Consistent Titles */
+h1, h2, h3, h4, h5 {
+    color: #333;
+    font-weight: bold;
+}
+
+/* -------------------------
+   UTRGV BRAND COLORS
+------------------------- */
+.utr-orange {
+    color: #F05023 !important;
+    font-weight: 900;
+}
+
+.utr-blue {
+    color: #00447C !important;
+}
+
+/* -------------------------
+   NAVBAR STYLING  
+------------------------- */
+.utrgv-navbar {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Centered Title */
+.navbar-title {
+    color: white;
+    font-size: 1.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Orange underline under UTRGV title */
+.navbar-title::after {
+    content: "";
+    width: 60%;
+    height: 3px;
+    background-color: #F05023;
+    display: block;
+    margin: 8px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* Container for right-side buttons (e.g., Logout) */
+.navbar-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Default Bootstrap button hover polish */
+.btn-outline-light:hover {
+    background-color: #F05023 !important;
+    border-color: #F05023 !important;
+    color: white !important;
+}
+
+/* -------------------------
+   BUTTONS
+------------------------- */
+.btn-orange {
+    background-color: #F05023 !important;
+    color: white !important;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #d8431f !important;
+    color: white !important;
+}
+
+/* -------------------------
+   CARDS  
+------------------------- */
+.card {
+    border-radius: 12px;
+}
+
+/* Modern drop-shadow */
+.card.shadow-sm {
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+/* -------------------------
+   INPUT FIELDS  
+------------------------- */
+input.form-control {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* -------------------------
+   LOGIN PAGE BACKGROUND  
+------------------------- */
+.login-background {
+    background: linear-gradient(135deg, #ffffff, #f8e9e4, #ffe4d6);
+    background-size: cover;
+    min-height: 100vh;
+}
