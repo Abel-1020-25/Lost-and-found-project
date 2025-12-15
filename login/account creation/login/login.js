@@ -1,14 +1,24 @@
-// Handle Login form
-const loginForm = document.getElementById('loginForm');
+const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // stop page reload
+loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value.trim();
+    const email = document.getElementById("loginEmail").value.trim();
 
-    // const res = await fetch('http://localhost:3000/api/login', { ... })
+    //  Clear old signup info FIRST
+    localStorage.removeItem("userInfo");
 
-    console.log('Login with:', email, password);
-    alert('Login clicked (this will later talk to the backend).');
+    // Save ONLY what login should know
+    const userInfo = {
+        email: email,
+        firstName: "",
+        middleName: "",
+        lastName: "",
+        utrgvId: ""
+    };
+
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+    // Go to logged-in home
+    window.location.href = "../../../AfterLogIn/afterLog.html";
 });

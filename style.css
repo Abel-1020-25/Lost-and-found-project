@@ -118,3 +118,18 @@ input.form-control {
     background-size: cover;
     min-height: 100vh;
 }
+
+/* User Profile Picture */
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: #e6e6e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #999;
+    cursor: pointer;
+}
+

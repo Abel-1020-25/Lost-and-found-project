@@ -11,12 +11,20 @@
 <body class="login-background">
 
     <!-- navbar-->
-    <nav class="navbar navbar-dark bg-dark mb-4">
-        <div class="container d-flex justify-content-between">
-            <a class="navbar-brand" href="home.html">Lost and Found</a>
-            <a href="index.html" class="btn btn-outline-light btn-sm">Logout</a>
-        </div>
-    </nav>
+    <nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="navbar-title text-center">
+      <span class="utr-orange">UTRGV</span> Lost &amp; Found
+    </h1>
+    <div class="navbar-actions mt-2">
+      <a href="../home/index.html" class="btn btn-outline-light btn-sm">Logout</a>
+      <a href="../AfterLogIn/afterLog.html" class="btn btn-outline-light btn-sm">Home</a>
+    </div>
+  </div>
+</nav>
+
+
+
 
     <div class="container">
         <h2 class="mb-4">Post a Lost Item</h2>
@@ -30,9 +38,18 @@
                         <select class="form-select" id="itemType" required>
                             <option value="" selected disabled>Choose...</option>
                             <option value="clothing">Clothing</option>
-                            <option value="artifact">Artifact</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="accessories">Accessories (Glasses, Jewelry, Watch)</option>
+                            <option value="backpack">Backpack / Bag</option>
+                            <option value="wallet">Wallet / Purse</option>
+                            <option value="keys">Keys</option>
+                            <option value="id">ID / Card</option>
+                            <option value="books">Books / Notebooks</option>
+                            <option value="waterbottle">Water Bottle</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
+
 
                     <!-- Building and room -->
                     <div class="row">
@@ -90,15 +107,36 @@
 
     <!-- Simple front-end form handler placeholder -->
     <script>
-        document.getElementById('postItemForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+document.getElementById('postItemForm').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-            // TODO: Replace this with an actual backend call (e.g., fetch/axios)
-            document.getElementById('postSuccess').classList.remove('d-none');
+    const item = {
+        type: document.getElementById('itemType').value,
+        building: document.getElementById('building').value,
+        room: document.getElementById('room').value,
+        date: document.getElementById('dateFound').value,
+        time: document.getElementById('timeFound').value,
+        color: document.getElementById('color').value,
+        details: document.getElementById('specialDetails').value
+    };
 
-            // Optionally clear form
-            this.reset();
-        });
-    </script>
+    // Get existing lost items or create empty array
+    const lostItems = JSON.parse(localStorage.getItem('lostItems')) || [];
+    lostItems.push(item);
+
+    // Save back to localStorage
+    localStorage.setItem('lostItems', JSON.stringify(lostItems));
+
+    // Show success message
+    const success = document.getElementById('postSuccess');
+    success.classList.remove('d-none');
+
+    // Redirect after short delay
+    setTimeout(() => {
+        window.location.href = "../AfterLogIn/afterLog.html";
+    }, 2000);
+});
+</script>
+
 </body>
 </html>
