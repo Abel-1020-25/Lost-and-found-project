@@ -4,233 +4,225 @@
   <link rel="stylesheet" href="../style.css">
   <meta charset="UTF-8">
   <title>Post Lost Item - Lost and Found</title>
-
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="login-background">
 
-  <!-- navbar -->
-  <nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
-    <div class="container d-flex flex-column justify-content-center align-items-center">
-      <h1 class="navbar-title text-center">
-        <span class="utr-orange">UTRGV</span> Lost &amp; Found
-      </h1>
-      <div class="navbar-actions mt-2">
-        <a href="../home/index.html" class="btn btn-outline-light btn-sm">Logout</a>
-        <a href="../AfterLogIn/afterLog.html" class="btn btn-outline-light btn-sm">Home</a>
-      </div>
+<nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="navbar-title text-center">
+      <span class="utr-orange">UTRGV</span> Lost &amp; Found
+    </h1>
+    <div class="navbar-actions mt-2">
+      <a href="../home/index.html" class="btn btn-outline-light btn-sm">Logout</a>
+      <a href="../AfterLogIn/afterLog.html" class="btn btn-outline-light btn-sm">Home</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <div class="container">
-    <h2 class="mb-4">Post a Lost Item</h2>
+<div class="container">
+  <h2 class="mb-4">Post a Lost Item</h2>
 
-    <div class="card shadow-sm mb-4">
-      <div class="card-body">
-        <form id="postItemForm">
-          <!-- Item type -->
-          <div class="mb-3">
-            <label class="form-label">Item Type</label>
-            <select class="form-select" id="itemType" required>
-              <option value="" selected disabled>Choose...</option>
-              <option value="clothing">Clothing</option>
-              <option value="electronics">Electronics</option>
-              <option value="accessories">Accessories (Glasses, Jewelry, Watch)</option>
-              <option value="backpack">Backpack / Bag</option>
-              <option value="wallet">Wallet / Purse</option>
-              <option value="keys">Keys</option>
-              <option value="id">ID / Card</option>
-              <option value="books">Books / Notebooks</option>
-              <option value="waterbottle">Water Bottle</option>
-              <option value="other">Other</option>
-            </select>
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <form id="postItemForm">
+        <div class="mb-3">
+          <label class="form-label">Item Type</label>
+          <select class="form-select" id="itemType" required>
+            <option value="" selected disabled>Choose...</option>
+            <option value="clothing">Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories (Glasses, Jewelry, Watch)</option>
+            <option value="backpack">Backpack / Bag</option>
+            <option value="wallet">Wallet / Purse</option>
+            <option value="keys">Keys</option>
+            <option value="id">ID / Card</option>
+            <option value="books">Books / Notebooks</option>
+            <option value="waterbottle">Water Bottle</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Building</label>
+            <input type="text" class="form-control" id="building" placeholder="e.g., Engineering Building" required>
           </div>
-
-          <!-- Building and room -->
-          <div class="row">
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Building</label>
-              <input type="text" class="form-control" id="building" placeholder="e.g., Engineering Building" required>
-            </div>
-
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Room</label>
-              <input type="text" class="form-control" id="room" placeholder="e.g., EENG 1.234" required>
-            </div>
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Room</label>
+            <input type="text" class="form-control" id="room" placeholder="e.g., EENG 1.234" required>
           </div>
+        </div>
 
-          <!-- Date and time -->
-          <div class="row">
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Date Lost</label>
-              <!-- keeping your id name to avoid breaking existing JS -->
-              <input type="date" class="form-control" id="dateFound" required>
-            </div>
-
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Time Lost</label>
-              <!-- keeping your id name to avoid breaking existing JS -->
-              <input type="time" class="form-control" id="timeFound" required>
-            </div>
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Date Lost</label>
+            <input type="date" class="form-control" id="dateFound" required>
           </div>
-
-          <!-- Color -->
-          <div class="mb-3">
-            <label class="form-label">Color</label>
-            <input type="text" class="form-control" id="color" placeholder="e.g., Black, Red and White" required>
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Time Lost</label>
+            <input type="time" class="form-control" id="timeFound" required>
           </div>
+        </div>
 
-          <!-- Special details -->
-          <div class="mb-3">
-            <label class="form-label">Special Details</label>
-            <textarea class="form-control" id="specialDetails" rows="3"
-              placeholder="Any special markings, logos, damage, or unique features to help identify the item."
-              required></textarea>
-          </div>
+        <div class="mb-3">
+          <label class="form-label">Color</label>
+          <input type="text" class="form-control" id="color" placeholder="e.g., Black, Red and White" required>
+        </div>
 
-          <button type="submit" class="btn btn-primary w-100">Submit Lost Item</button>
-        </form>
-      </div>
+        <div class="mb-3">
+          <label class="form-label">Special Details</label>
+          <textarea class="form-control" id="specialDetails" rows="3"
+            placeholder="Any special markings, logos, damage, or unique features to help identify the item."
+            required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit Lost Item</button>
+      </form>
     </div>
-
-    <!-- Success alert -->
-    <div id="postSuccess" class="alert alert-success d-none" role="alert">
-      Lost item posted successfully! (Saved in your browser storage.)
-    </div>
-
-    <!-- All items section -->
-    <hr class="my-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3 class="mb-0">All Reported Lost Items</h3>
-      <button id="clearAllBtn" class="btn btn-outline-danger btn-sm" type="button">
-        Clear All
-      </button>
-    </div>
-
-    <div id="lostItemsList" class="row g-3"></div>
-
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="postSuccess" class="alert alert-success d-none" role="alert">
+    Lost item posted successfully!
+  </div>
 
-  <script>
-    function getLostItems() {
-      return JSON.parse(localStorage.getItem('lostItems')) || [];
+  <!-- ✅ SHOW ALL LOST ITEMS -->
+  <hr class="my-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">All Lost Items</h3>
+    <button id="clearAllBtn" class="btn btn-outline-danger btn-sm" type="button">Clear All</button>
+  </div>
+
+  <div id="lostItemsList" class="row g-3"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function escapeHtml(str) {
+    return String(str ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function getLostItems() {
+    return JSON.parse(localStorage.getItem("lostItems")) || [];
+  }
+
+  function saveLostItems(items) {
+    localStorage.setItem("lostItems", JSON.stringify(items));
+  }
+
+  function renderLostItems() {
+    const container = document.getElementById("lostItemsList");
+    container.innerHTML = "";
+
+    const items = getLostItems();
+    const currentUser = JSON.parse(localStorage.getItem("userInfo"));
+    const currentEmail = currentUser?.email || "";
+
+    if (items.length === 0) {
+      container.innerHTML = `<p class="text-muted">No lost items have been posted yet.</p>`;
+      return;
     }
 
-    function saveLostItems(items) {
-      localStorage.setItem('lostItems', JSON.stringify(items));
-    }
+    items.slice().reverse().forEach((item, displayIndex) => {
+      const col = document.createElement("div");
+      col.className = "col-md-6 col-lg-4";
 
-    function escapeHtml(str) {
-      // basic protection so user text doesn't break your page
-      return String(str ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
+      const canDelete = (item.ownerEmail || "") === currentEmail;
 
-    function renderLostItems() {
-      const container = document.getElementById('lostItemsList');
-      const lostItems = getLostItems();
+      col.innerHTML = `
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-capitalize">${escapeHtml(item.type)}</h5>
+            <p class="mb-1"><strong>Building:</strong> ${escapeHtml(item.building)}</p>
+            <p class="mb-1"><strong>Room:</strong> ${escapeHtml(item.room)}</p>
+            <p class="mb-1"><strong>Date/Time Lost:</strong> ${escapeHtml(item.date)} ${escapeHtml(item.time)}</p>
+            <p class="mb-1"><strong>Color:</strong> ${escapeHtml(item.color)}</p>
+            <p><strong>Details:</strong> ${escapeHtml(item.details)}</p>
 
-      container.innerHTML = "";
-
-      if (lostItems.length === 0) {
-        container.innerHTML = `<p class="text-muted">No lost items have been posted yet.</p>`;
-        return;
-      }
-
-      // Show newest first
-      const newestFirst = [...lostItems].reverse();
-
-      newestFirst.forEach((item, displayIndex) => {
-        const card = document.createElement('div');
-        card.className = "col-md-6 col-lg-4";
-
-        card.innerHTML = `
-          <div class="card shadow-sm h-100">
-            <div class="card-body">
-              <h5 class="card-title text-capitalize">${escapeHtml(item.type)}</h5>
-
-              <p class="card-text mb-1"><strong>Building:</strong> ${escapeHtml(item.building)}</p>
-              <p class="card-text mb-1"><strong>Room:</strong> ${escapeHtml(item.room)}</p>
-              <p class="card-text mb-1"><strong>Color:</strong> ${escapeHtml(item.color)}</p>
-              <p class="card-text mb-1"><strong>Date Lost:</strong> ${escapeHtml(item.date)}</p>
-              <p class="card-text mb-1"><strong>Time Lost:</strong> ${escapeHtml(item.time)}</p>
-              <p class="card-text"><strong>Details:</strong> ${escapeHtml(item.details)}</p>
-
-              <button class="btn btn-outline-danger btn-sm mt-2 w-100" data-delete="${displayIndex}">
-                Delete This Item
+            ${canDelete ? `
+              <button class="btn btn-outline-danger btn-sm w-100" data-del="${displayIndex}">
+                Delete (My Post)
               </button>
-            </div>
+            ` : `
+              <button class="btn btn-outline-secondary btn-sm w-100" disabled>
+                Not your post
+              </button>
+            `}
           </div>
-        `;
+        </div>
+      `;
 
-        container.appendChild(card);
+      container.appendChild(col);
+    });
+
+    // delete handlers (displayIndex is from reversed list)
+    container.querySelectorAll("[data-del]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const displayIndex = Number(btn.getAttribute("data-del"));
+        const items = getLostItems();
+        const realIndex = (items.length - 1) - displayIndex;
+
+        const currentUser = JSON.parse(localStorage.getItem("userInfo"));
+        const currentEmail = currentUser?.email || "";
+
+        if ((items[realIndex].ownerEmail || "") !== currentEmail) {
+          alert("You can only delete items you posted.");
+          return;
+        }
+
+        items.splice(realIndex, 1);
+        saveLostItems(items);
+        renderLostItems();
       });
+    });
+  }
 
-      // Delete handlers (because we reversed, map displayIndex back to real index)
-      container.querySelectorAll("[data-delete]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const displayIndex = Number(btn.getAttribute("data-delete"));
-          const items = getLostItems();
+  document.getElementById("postItemForm").addEventListener("submit", (e) => {
+    e.preventDefault();
 
-          // newestFirst index -> original array index
-          const realIndex = (items.length - 1) - displayIndex;
-
-          items.splice(realIndex, 1);
-          saveLostItems(items);
-          renderLostItems();
-        });
-      });
+    const currentUser = JSON.parse(localStorage.getItem("userInfo"));
+    if (!currentUser || !currentUser.email) {
+      alert("You must be logged in to post items.");
+      return;
     }
 
-    document.getElementById('postItemForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    const item = {
+      ownerEmail: currentUser.email,
+      type: document.getElementById("itemType").value,
+      building: document.getElementById("building").value,
+      room: document.getElementById("room").value,
+      date: document.getElementById("dateFound").value,
+      time: document.getElementById("timeFound").value,
+      color: document.getElementById("color").value,
+      details: document.getElementById("specialDetails").value
+    };
 
-      const item = {
-        type: document.getElementById('itemType').value,
-        building: document.getElementById('building').value,
-        room: document.getElementById('room').value,
-        date: document.getElementById('dateFound').value,
-        time: document.getElementById('timeFound').value,
-        color: document.getElementById('color').value,
-        details: document.getElementById('specialDetails').value
-      };
+    const items = getLostItems();
+    items.push(item);
+    saveLostItems(items);
 
-      const lostItems = getLostItems();
-      lostItems.push(item);
-      saveLostItems(lostItems);
+    document.getElementById("postSuccess").classList.remove("d-none");
+    document.getElementById("postItemForm").reset();
 
-      // Show success
-      const success = document.getElementById('postSuccess');
-      success.classList.remove('d-none');
-
-      // Reset form
-      document.getElementById('postItemForm').reset();
-
-      // Refresh list
-      renderLostItems();
-    });
-
-    document.getElementById("clearAllBtn").addEventListener("click", () => {
-      localStorage.removeItem("lostItems");
-      renderLostItems();
-
-      // hide success if it was showing
-      document.getElementById('postSuccess').classList.add('d-none');
-    });
-
-    // Load items on page load
     renderLostItems();
-  </script>
+  });
+
+  document.getElementById("clearAllBtn").addEventListener("click", () => {
+    localStorage.removeItem("lostItems");
+    renderLostItems();
+    document.getElementById("postSuccess").classList.add("d-none");
+  });
+
+  // load list on page start
+  renderLostItems();
+</script>
 
 </body>
 </html>

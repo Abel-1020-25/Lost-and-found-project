@@ -4,270 +4,257 @@
   <link rel="stylesheet" href="../style.css">
   <meta charset="UTF-8">
   <title>Post Found Item - Lost and Found</title>
-
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="login-background">
 
-  <!-- navbar -->
-  <nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
-    <div class="container d-flex flex-column justify-content-center align-items-center">
-      <h1 class="navbar-title text-center">
-        <span class="utr-orange">UTRGV</span> Lost &amp; Found
-      </h1>
-      <div class="navbar-actions mt-2">
-        <a href="../home/index.html" class="btn btn-outline-light btn-sm">Logout</a>
-        <a href="../AfterLogIn/afterLog.html" class="btn btn-outline-light btn-sm">Home</a>
-      </div>
+<nav class="navbar navbar-dark bg-dark mb-4 utrgv-navbar">
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="navbar-title text-center">
+      <span class="utr-orange">UTRGV</span> Lost &amp; Found
+    </h1>
+    <div class="navbar-actions mt-2">
+      <a href="../home/index.html" class="btn btn-outline-light btn-sm">Logout</a>
+      <a href="../AfterLogIn/afterLog.html" class="btn btn-outline-light btn-sm">Home</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <div class="container">
-    <h2 class="mb-4">Post a Found Item</h2>
+<div class="container">
+  <h2 class="mb-4">Post a Found Item</h2>
 
-    <div class="card shadow-sm mb-4">
-      <div class="card-body">
-        <form id="postFoundForm">
-          <!-- Item type -->
-          <div class="mb-3">
-            <label class="form-label">Item Type</label>
-            <select class="form-select" id="itemType" required>
-              <option value="" selected disabled>Choose...</option>
-              <option value="clothing">Clothing</option>
-              <option value="electronics">Electronics</option>
-              <option value="accessories">Accessories (Glasses, Jewelry, Watch)</option>
-              <option value="backpack">Backpack / Bag</option>
-              <option value="wallet">Wallet / Purse</option>
-              <option value="keys">Keys</option>
-              <option value="id">ID / Card</option>
-              <option value="books">Books / Notebooks</option>
-              <option value="waterbottle">Water Bottle</option>
-              <option value="other">Other</option>
-            </select>
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <form id="postFoundForm">
+        <div class="mb-3">
+          <label class="form-label">Item Type</label>
+          <select class="form-select" id="itemType" required>
+            <option value="" selected disabled>Choose...</option>
+            <option value="clothing">Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories (Glasses, Jewelry, Watch)</option>
+            <option value="backpack">Backpack / Bag</option>
+            <option value="wallet">Wallet / Purse</option>
+            <option value="keys">Keys</option>
+            <option value="id">ID / Card</option>
+            <option value="books">Books / Notebooks</option>
+            <option value="waterbottle">Water Bottle</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Building Found</label>
+            <input type="text" class="form-control" id="foundBuilding" required>
           </div>
-
-          <!-- Where you found it -->
-          <div class="row">
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Building Found</label>
-              <input type="text" class="form-control" id="foundBuilding" placeholder="e.g., Library" required>
-            </div>
-
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Room / Area Found</label>
-              <input type="text" class="form-control" id="foundRoom" placeholder="e.g., LIB 2.101 / Near entrance" required>
-            </div>
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Room / Area Found</label>
+            <input type="text" class="form-control" id="foundRoom" required>
           </div>
+        </div>
 
-          <!-- Date and time found -->
-          <div class="row">
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Date Found</label>
-              <input type="date" class="form-control" id="dateFound" required>
-            </div>
-
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Time Found</label>
-              <input type="time" class="form-control" id="timeFound" required>
-            </div>
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Date Found</label>
+            <input type="date" class="form-control" id="dateFound" required>
           </div>
-
-          <!-- Color -->
-          <div class="mb-3">
-            <label class="form-label">Color</label>
-            <input type="text" class="form-control" id="color" placeholder="e.g., Black, Red and White" required>
+          <div class="mb-3 col-md-6">
+            <label class="form-label">Time Found</label>
+            <input type="time" class="form-control" id="timeFound" required>
           </div>
+        </div>
 
-          <!-- Description -->
-          <div class="mb-3">
-            <label class="form-label">Description / Details</label>
-            <textarea class="form-control" id="details" rows="3"
-              placeholder="Any markings, brand, logos, damage, or unique features."
-              required></textarea>
-          </div>
+        <div class="mb-3">
+          <label class="form-label">Color</label>
+          <input type="text" class="form-control" id="color" required>
+        </div>
 
-          <!-- Where you left it -->
-          <div class="mb-3">
-            <label class="form-label">Where did you leave it?</label>
-            <select class="form-select" id="leftWith" required>
-              <option value="" selected disabled>Choose...</option>
-              <option value="university-police">University Police</option>
-              <option value="front-desk">Building Front Desk / Reception</option>
-              <option value="lost-found-office">Lost &amp; Found Office</option>
-              <option value="professor">Professor / Staff Member</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+        <div class="mb-3">
+          <label class="form-label">Description / Details</label>
+          <textarea class="form-control" id="details" rows="3" required></textarea>
+        </div>
 
-          <!-- If they pick "other" -->
-          <div class="mb-3 d-none" id="otherLeftWithBox">
-            <label class="form-label">If Other, explain where you left it</label>
-            <input type="text" class="form-control" id="leftWithOther" placeholder="e.g., Security desk at Student Union">
-          </div>
+        <div class="mb-3">
+          <label class="form-label">Where did you leave it?</label>
+          <select class="form-select" id="leftWith" required>
+            <option value="" selected disabled>Choose...</option>
+            <option value="University Police">University Police</option>
+            <option value="Front Desk / Reception">Front Desk / Reception</option>
+            <option value="Lost & Found Office">Lost & Found Office</option>
+            <option value="Professor / Staff">Professor / Staff</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
-          <button type="submit" class="btn btn-success w-100">Submit Found Item</button>
-        </form>
-      </div>
+        <div class="mb-3 d-none" id="otherLeftWithBox">
+          <label class="form-label">If Other, explain where you left it</label>
+          <input type="text" class="form-control" id="leftWithOther">
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Submit Found Item</button>
+      </form>
     </div>
-
-    <!-- Success alert -->
-    <div id="postSuccess" class="alert alert-success d-none" role="alert">
-      Found item posted successfully! (Saved in your browser storage.)
-    </div>
-
-    <!-- All found items section -->
-    <hr class="my-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3 class="mb-0">All Found Items</h3>
-      <button id="clearAllBtn" class="btn btn-outline-danger btn-sm" type="button">
-        Clear All
-      </button>
-    </div>
-
-    <div id="foundItemsList" class="row g-3"></div>
-
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="postSuccess" class="alert alert-success d-none" role="alert">
+    Found item posted successfully!
+  </div>
 
-  <script>
-    // Show/hide the "Other" textbox
-    const leftWithSelect = document.getElementById("leftWith");
-    const otherBox = document.getElementById("otherLeftWithBox");
+  <!-- ✅ SHOW ALL FOUND ITEMS -->
+  <hr class="my-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">All Found Items</h3>
+    <button id="clearAllBtn" class="btn btn-outline-danger btn-sm" type="button">Clear All</button>
+  </div>
 
-    leftWithSelect.addEventListener("change", () => {
-      if (leftWithSelect.value === "other") {
-        otherBox.classList.remove("d-none");
-      } else {
-        otherBox.classList.add("d-none");
-        document.getElementById("leftWithOther").value = "";
-      }
-    });
+  <div id="foundItemsList" class="row g-3"></div>
+</div>
 
-    function getFoundItems() {
-      return JSON.parse(localStorage.getItem('foundItems')) || [];
-    }
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    function saveFoundItems(items) {
-      localStorage.setItem('foundItems', JSON.stringify(items));
-    }
+<script>
+  const leftWithSelect = document.getElementById("leftWith");
+  const otherBox = document.getElementById("otherLeftWithBox");
 
-    function escapeHtml(str) {
-      return String(str ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    function renderFoundItems() {
-      const container = document.getElementById('foundItemsList');
-      const foundItems = getFoundItems();
-
-      container.innerHTML = "";
-
-      if (foundItems.length === 0) {
-        container.innerHTML = `<p class="text-muted">No found items have been posted yet.</p>`;
-        return;
-      }
-
-      // Show newest first
-      const newestFirst = [...foundItems].reverse();
-
-      newestFirst.forEach((item, displayIndex) => {
-        const card = document.createElement('div');
-        card.className = "col-md-6 col-lg-4";
-
-        const leftWithText = item.leftWith === "other"
-          ? item.leftWithOther
-          : item.leftWith;
-
-        card.innerHTML = `
-          <div class="card shadow-sm h-100">
-            <div class="card-body">
-              <h5 class="card-title text-capitalize">${escapeHtml(item.type)}</h5>
-
-              <p class="card-text mb-1"><strong>Found at:</strong> ${escapeHtml(item.foundBuilding)} — ${escapeHtml(item.foundRoom)}</p>
-              <p class="card-text mb-1"><strong>Date/Time Found:</strong> ${escapeHtml(item.dateFound)} at ${escapeHtml(item.timeFound)}</p>
-              <p class="card-text mb-1"><strong>Color:</strong> ${escapeHtml(item.color)}</p>
-              <p class="card-text mb-1"><strong>Left with:</strong> ${escapeHtml(leftWithText)}</p>
-              <p class="card-text"><strong>Details:</strong> ${escapeHtml(item.details)}</p>
-
-              <button class="btn btn-outline-danger btn-sm mt-2 w-100" data-delete="${displayIndex}">
-                Delete This Item
-              </button>
-            </div>
-          </div>
-        `;
-
-        container.appendChild(card);
-      });
-
-      // Delete handlers (because we reversed, map displayIndex back to real index)
-      container.querySelectorAll("[data-delete]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const displayIndex = Number(btn.getAttribute("data-delete"));
-          const items = getFoundItems();
-
-          // newestFirst index -> original array index
-          const realIndex = (items.length - 1) - displayIndex;
-
-          items.splice(realIndex, 1);
-          saveFoundItems(items);
-          renderFoundItems();
-        });
-      });
-    }
-
-    document.getElementById('postFoundForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const leftWith = document.getElementById('leftWith').value;
-      const leftWithOther = document.getElementById('leftWithOther').value.trim();
-
-      const item = {
-        kind: "found",
-        type: document.getElementById('itemType').value,
-        foundBuilding: document.getElementById('foundBuilding').value,
-        foundRoom: document.getElementById('foundRoom').value,
-        dateFound: document.getElementById('dateFound').value,
-        timeFound: document.getElementById('timeFound').value,
-        color: document.getElementById('color').value,
-        details: document.getElementById('details').value,
-        leftWith: leftWith,
-        leftWithOther: leftWith === "other" ? leftWithOther : ""
-      };
-
-      const foundItems = getFoundItems();
-      foundItems.push(item);
-      saveFoundItems(foundItems);
-
-      // Show success message
-      const success = document.getElementById('postSuccess');
-      success.classList.remove('d-none');
-
-      // Reset form
-      document.getElementById('postFoundForm').reset();
+  leftWithSelect.addEventListener("change", () => {
+    if (leftWithSelect.value === "Other") {
+      otherBox.classList.remove("d-none");
+    } else {
       otherBox.classList.add("d-none");
+      document.getElementById("leftWithOther").value = "";
+    }
+  });
 
-      // Refresh list
-      renderFoundItems();
+  function escapeHtml(str) {
+    return String(str ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function getFoundItems() {
+    return JSON.parse(localStorage.getItem("foundItems")) || [];
+  }
+
+  function saveFoundItems(items) {
+    localStorage.setItem("foundItems", JSON.stringify(items));
+  }
+
+  function renderFoundItems() {
+    const container = document.getElementById("foundItemsList");
+    container.innerHTML = "";
+
+    const items = getFoundItems();
+    const currentUser = JSON.parse(localStorage.getItem("userInfo"));
+    const currentEmail = currentUser?.email || "";
+
+    if (items.length === 0) {
+      container.innerHTML = `<p class="text-muted">No found items have been posted yet.</p>`;
+      return;
+    }
+
+    items.slice().reverse().forEach((item, displayIndex) => {
+      const col = document.createElement("div");
+      col.className = "col-md-6 col-lg-4";
+
+      const leftWithText = item.leftWith === "Other" ? item.leftWithOther : item.leftWith;
+      const canDelete = (item.ownerEmail || "") === currentEmail;
+
+      col.innerHTML = `
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-capitalize">${escapeHtml(item.type)}</h5>
+            <p class="mb-1"><strong>Found at:</strong> ${escapeHtml(item.foundBuilding)} • ${escapeHtml(item.foundRoom)}</p>
+            <p class="mb-1"><strong>Date/Time:</strong> ${escapeHtml(item.dateFound)} ${escapeHtml(item.timeFound)}</p>
+            <p class="mb-1"><strong>Color:</strong> ${escapeHtml(item.color)}</p>
+            <p class="mb-1"><strong>Left with:</strong> ${escapeHtml(leftWithText)}</p>
+            <p><strong>Details:</strong> ${escapeHtml(item.details)}</p>
+
+            ${canDelete ? `
+              <button class="btn btn-outline-danger btn-sm w-100" data-del="${displayIndex}">
+                Delete (My Post)
+              </button>
+            ` : `
+              <button class="btn btn-outline-secondary btn-sm w-100" disabled>
+                Not your post
+              </button>
+            `}
+          </div>
+        </div>
+      `;
+
+      container.appendChild(col);
     });
 
-    document.getElementById("clearAllBtn").addEventListener("click", () => {
-      localStorage.removeItem("foundItems");
-      renderFoundItems();
-      document.getElementById('postSuccess').classList.add('d-none');
-    });
+    container.querySelectorAll("[data-del]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const displayIndex = Number(btn.getAttribute("data-del"));
+        const items = getFoundItems();
+        const realIndex = (items.length - 1) - displayIndex;
 
-    // Load items on page load
+        const currentUser = JSON.parse(localStorage.getItem("userInfo"));
+        const currentEmail = currentUser?.email || "";
+
+        if ((items[realIndex].ownerEmail || "") !== currentEmail) {
+          alert("You can only delete items you posted.");
+          return;
+        }
+
+        items.splice(realIndex, 1);
+        saveFoundItems(items);
+        renderFoundItems();
+      });
+    });
+  }
+
+  document.getElementById("postFoundForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const currentUser = JSON.parse(localStorage.getItem("userInfo"));
+    if (!currentUser || !currentUser.email) {
+      alert("You must be logged in to post items.");
+      return;
+    }
+
+    const leftWith = document.getElementById("leftWith").value;
+    const leftWithOther = document.getElementById("leftWithOther").value.trim();
+
+    const item = {
+      ownerEmail: currentUser.email,
+      type: document.getElementById("itemType").value,
+      foundBuilding: document.getElementById("foundBuilding").value,
+      foundRoom: document.getElementById("foundRoom").value,
+      dateFound: document.getElementById("dateFound").value,
+      timeFound: document.getElementById("timeFound").value,
+      color: document.getElementById("color").value,
+      details: document.getElementById("details").value,
+      leftWith: leftWith,
+      leftWithOther: leftWith === "Other" ? leftWithOther : ""
+    };
+
+    const items = getFoundItems();
+    items.push(item);
+    saveFoundItems(items);
+
+    document.getElementById("postSuccess").classList.remove("d-none");
+    document.getElementById("postFoundForm").reset();
+    otherBox.classList.add("d-none");
+
     renderFoundItems();
-  </script>
+  });
+
+  document.getElementById("clearAllBtn").addEventListener("click", () => {
+    localStorage.removeItem("foundItems");
+    renderFoundItems();
+    document.getElementById("postSuccess").classList.add("d-none");
+  });
+
+  renderFoundItems();
+</script>
 
 </body>
 </html>
