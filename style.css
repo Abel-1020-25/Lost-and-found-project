@@ -1,6 +1,7 @@
 /* -------------------------
    GLOBAL STYLES  
 ------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&display=swap');
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f7f7f7;
@@ -8,7 +9,7 @@ body {
     padding: 0;
 }
 
-/* Makes all pages feel clean and centered */
+/* Makes all pagesclean and centered */
 .container {
     margin-top: 30px;
 }
@@ -18,14 +19,22 @@ h1, h2, h3, h4, h5 {
     color: #333;
     font-weight: bold;
 }
-
 /* -------------------------
    UTRGV BRAND COLORS
 ------------------------- */
 .utr-orange {
-    color: #F05023 !important;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 900;
+    letter-spacing: 3px;
+    color: #F05023 !important;
+    margin-right: 6px;
+    text-shadow: 
+        1px 1px 0 rgba(0,0,0,0.35),
+        2px 2px 3px rgba(0,0,0,0.25);
 }
+
+
+
 
 .utr-blue {
     color: #00447C !important;
@@ -43,24 +52,26 @@ h1, h2, h3, h4, h5 {
 /* Centered Title */
 .navbar-title {
     color: white;
-    font-size: 1.9rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 600;
     letter-spacing: 1px;
-    position: relative;
     text-transform: uppercase;
     text-align: center;
 }
 
+
 /* Orange underline under UTRGV title */
 .navbar-title::after {
     content: "";
-    width: 60%;
-    height: 3px;
+    width: 200px;
+    height: 4px;
     background-color: #F05023;
     display: block;
-    margin: 8px auto 0 auto;
-    border-radius: 2px;
+    margin: 10px auto 0;
+    border-radius: 4px;
 }
+
 
 /* Container for right-side buttons (e.g., Logout) */
 .navbar-actions {
@@ -133,3 +144,16 @@ input.form-control {
     cursor: pointer;
 }
 
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Make UTRGV stand out more like a logo */
+.navbar-title .utr-orange {
+    font-size: 2.3rem;     /* bigger than rest */
+    letter-spacing: 2px;   /* logo-style spacing */
+    display: inline-block;
+}
